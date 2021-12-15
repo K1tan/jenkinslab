@@ -7,7 +7,7 @@ pipeline {
                         	try
                         	{
                            		bat("rd C:\\Results /s /q")
-                            		bat("rd C:\Repository\jenkinslab /s /q")
+                            		bat("rd C:\\Repository\\jenkinslab /s /q")
                         	}catch(Exception e){}
                 	}
         	}
@@ -24,7 +24,7 @@ pipeline {
 	        }
 	    stage('Build') {
             	steps {
-                	bat ('C:\Repository\jenkinslab\\build.bat')
+                	bat ('C:\\Repository\\jenkinslab\\build.bat')
 		}
             }
 	    
