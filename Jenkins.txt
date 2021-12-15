@@ -37,7 +37,7 @@ pipeline {
 	    }
 	    stage('Archive'){
                 steps{
-			dir('C:\\Repository'){
+			dir('C:\\'){
 				echo "Current build: ${BUILD_NUMBER}"
 				zip zipFile: "${BUILD_NUMBER}.zip", archive:false, dir: 'Results'
 				archiveArtifacts artifacts: "${BUILD_NUMBER}.zip"
