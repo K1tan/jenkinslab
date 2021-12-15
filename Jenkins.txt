@@ -37,16 +37,16 @@ pipeline {
 	    }
 	    stage('Archive'){
                 steps{
-			dir('C:\\'){
+			dir('C:\\Results'){
 				echo "Current build: ${BUILD_NUMBER}"
-				zip zipFile: "${BUILD_NUMBER}.zip", archive:false, dir: 'Results'
+				zip zipFile: "${BUILD_NUMBER}.zip", archive:false
 				archiveArtifacts artifacts: "${BUILD_NUMBER}.zip"
 			}
 		}
 	    }
 	    stage('Deploy'){
 		steps{
-			dir('C:\\'){
+			dir('C:\\Results'){
 				script{
 					try
 					{
