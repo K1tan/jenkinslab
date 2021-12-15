@@ -46,7 +46,7 @@ pipeline {
 	    }
 	    stage('Deploy'){
 		steps{
-			dir('C:\\Repository\\'){
+			dir('C:\\'){
 				script{
 					try
 					{
