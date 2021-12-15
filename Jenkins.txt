@@ -35,6 +35,28 @@ pipeline {
 			}
 		}
 	    }
+	    stage('Archive'){
+                steps{
+			dir('C:\\Repository'){
+				echo "Current build: ${BUILD_NUMBER}"
+				zip zipFile: "${BUILD_NUMBER}.zip", archive:false, dir: 'Results'
+				archiveArtifacts artifacts: "${BUILD_NUMBER}.zip"
+			}
+		}
+	    }
+	    stage('Deploy'){
+		steps{
+			dir('C:\\Repository\\'){
+				script{
+					try
+					{
+						bat("md C:\\Repository\\Deploy\\")
+					}catch(Exception e){}
+				}
+				unzip zipFile: "${BUILD_NUMBER}.zip", dir: 'C:\\Repository\\Deploy'
+			}
+		}
+	    }
 	    
    }
 }
