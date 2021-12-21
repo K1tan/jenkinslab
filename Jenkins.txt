@@ -57,11 +57,14 @@ pipeline {
 			}
 		}
 	    }
-	    stage('Email'){
-	    	steps{
+	    post('Email'){
+	    	always{
 			emailext(attachLog: true, body: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', subject: 'Build report', to: 'borgernikita0620@gmail.com')
 		}
-		}
+		cleanup {
+              		cleanWs()
+          	}
+	    }
 	    
    }
 }
